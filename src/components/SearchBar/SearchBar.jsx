@@ -8,47 +8,32 @@ import { pokeSearch } from '../../api';
 
 import "./SearchBar.css";
 
-const SearchBar = () => {
-	
-	const [pokemon, setPokemon] = useState("");
+const SearchBar = (props) => {
+
+	const {onSearch} = props;
 	
 	const [search, setSearch ] = useState("");
 
-	const onSearchHandler = async (pokemon) => {
-		if(!pokemon) return
+	const onChangeHandler = (e) => {
+		setSearch(e.target.value);
 
-		const res = await pokeSearch(pokemon);
-
-		setPokemon(res);
+		if (e.target.value == 0) {
+			onSearch(undefined);
+		}
 	}
 
-	const handleSubmit = (e) => {
-		e.preventDefault();
-
-		if (!search) return
-
-		onSearchHandler(search);
-
+	const onClickHandler = () => {
+		onSearch(search);
 	}
 	return (
 		<div className='search'>
-			<form onSubmit={handleSubmit}>
-				<input type="text" placeholder='Pesquise o pokemon' onChange={(e) => setSearch(e.target.value)} value={search}/>
-				<button type='submit'>
+				<input type="text" placeholder='Pesquise o pokemon' onChange={onChangeHandler}/>
+				<button onClick={onClickHandler}>
 					<FaSearch/>
 				</button>
 
 				<div>
-					{
-						pokemon ? (
-							<div>
-								<p>{pokemon.name}</p>
-							</div>
-						)
-						: null
-					}
 				</div>
-			</form>
 		</div>
 	)
 }

@@ -15,3 +15,12 @@
 	gap: 10px;
 	grid-template-columns: repeat(3, 1fr);
 }
+
+.notFound img {
+	width: 600px;
+}
+.notFound {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}

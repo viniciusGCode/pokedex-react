@@ -2,8 +2,9 @@ import React from 'react';
 import Pokemon from '../Pokemon/Pokemon';
 import "./Pokedex.css";
 import { useEffect, useState } from 'react';
-import { getPokemonData, getPokemons } from '../../api';
+import { getPokemonData, getPokemons, pokeSearch } from '../../api';
 import Pagination from '../Pagination/Pagination';
+import SearchBar from "../SearchBar/SearchBar"
 
 const Pokedex = () => {
 
@@ -14,6 +15,8 @@ const Pokedex = () => {
 	const [loading, setLoading] = useState(false);
 	
 	const [pokemons, setPokemons] = useState([]);
+
+	const [notFound, setNotFound] = useState(false);
 
 	const totalPerPage = 21;
 	
@@ -56,6 +59,31 @@ const Pokedex = () => {
 	}, [page])
 
 
+	const onSearchHandler = async (pokemon) => {
+		if(!pokemon){
+			return fetchPokemons();
+		}
+
+		setLoading(true);
+		setNotFound(false);
+		
+		const res = await pokeSearch(pokemon);
+
+		if(!res){
+			setLoading(false);
+			setNotFound(true);
+			setPage(0)
+			setTotal(1)
+		}else{
+			setPokemons([res])
+			setPage(0)
+			setTotal(1)
+		}
+
+		setLoading(false);
+	}
+
+
 	return (
 		<div className='main-container'>
 			<div className="header">
@@ -66,24 +94,35 @@ const Pokedex = () => {
 				previousClick={previousClickHandler}
 				nextClick={nextClickHandler}
 				/>
+				<SearchBar
+				onSearch={onSearchHandler}
+				/>
 			</div>
-			<div className='pokedex-container'>
-				{
-					loading ? 
-					<div> Carregando... </div>
-					: (
-						<div className='pokedex-grid'>
-							{
-								pokemons.length > 0 && pokemons.map((pokemon, index) => {
-									return (
-										<Pokemon pokemon={pokemon} key={index}/>
-									)
-								})
-							}
-						</div>
-					) 
-				}
-			</div>
+			{
+				notFound ? (
+					<div className='notFound'>
+						<img src="https://http.cat/404.png" alt="nao encontrado" />
+					</div>
+				) : (
+				<div className='pokedex-container'>
+					{
+						loading ? 
+						<div> Carregando... </div>
+						: (
+							<div className='pokedex-grid'>
+								{
+									pokemons.length > 0 && pokemons.map((pokemon, index) => {
+										return (
+											<Pokemon pokemon={pokemon} key={index}/>
+										)
+									})
+								}
+							</div>
+						) 
+					}
+				</div>
+				)
+			}
 		</div>
 	)
 }

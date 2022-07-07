@@ -1,15 +1,15 @@
-.search form{
+.search{
 	display: flex;
 	gap: 1rem;
 }
 
-.search form input {
+.search input {
 	padding: .2rem .8rem;
 	border-radius: 7px;
 	border: none;
 }
 
-.search form button {
+.search button {
 	background-color: #fff;
 	border-radius: 7px;
 	color: #000;
@@ -21,7 +21,7 @@
 	transition: .2s;
 }
 
-.navbar form button:hover{
+.search button:hover{
 	background-color: transparent;
 	color: #ff0000;
 }

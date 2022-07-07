@@ -2,8 +2,6 @@ import React from 'react';
 
 import "./Navbar.css";
 
-import SearchBar from '../SearchBar/SearchBar';
-
 import pokeAPI from "../../assets/pokeapi.png";
 
 const Navbar = () => {
@@ -16,7 +14,6 @@ const Navbar = () => {
 				</a>
 			</div>
 
-			<SearchBar/>
 		</nav>
 	)
 }
