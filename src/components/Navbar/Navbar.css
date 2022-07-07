@@ -1,0 +1,14 @@
+.navbar{
+	background-color: #111;
+	display: flex;
+	align-items: center;
+	padding: 1rem 2rem;
+	font-size: 1.2rem;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.navbar img{
+	transform: translateX(calc(-2rem / 2));
+	width: 150px;
+}

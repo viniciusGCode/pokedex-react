@@ -1,0 +1,17 @@
+.header{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	padding: .5rem;
+}
+
+.header span{
+	color: #ff0000;
+}
+
+.pokedex-grid {
+	display: grid;
+	gap: 10px;
+	grid-template-columns: repeat(3, 1fr);
+}
