@@ -17,3 +17,8 @@
   Fiz tudo do absoluto zero apenas com a documentação da API
   
   [PokeAPI](https://pokeapi.co)
+  
+  
+  ## 🖼️ Print da aplicação
+  
+  ![print da aplicação](https://github.com/UT0P1C/pokedex-react/blob/master/print.png)
