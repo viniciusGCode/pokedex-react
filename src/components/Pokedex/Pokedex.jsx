@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import { getPokemonData, getPokemons } from '../../api';
 import Pagination from '../Pagination/Pagination';
 
-const Pokedex = (pç) => {
+const Pokedex = () => {
 
 	const [page, setPage] = useState(0);
 	
@@ -88,4 +88,4 @@ const Pokedex = (pç) => {
 	)
 }
 
-export default Poked
+export default Pokedex;

@@ -30,12 +30,3 @@
 .poke-types .type p{
 	margin: 5px;
 }
-
-.poke-fav-btn button {
-	background-color: transparent;
-	color: #ff0000;
-	border: none;
-	cursor: pointer;
-	font-size: 1.5rem;
-	padding: .5rem;
-}

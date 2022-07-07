@@ -2,15 +2,10 @@ import React from 'react';
 
 import "./Pokemon.css"
 
-import {AiOutlineHeart, AiFillHeart} from "react-icons/ai";
 import { useState } from 'react';
 
 const Pokemon = (props) => {
 	const {pokemon} = props;
-
-	const heartClick = () => {
-		setFilled(!filled)
-	};
 
 	const [filled, setFilled] = useState(false);
 	return (
@@ -32,14 +27,6 @@ const Pokemon = (props) => {
 								)
 							})
 						}
-					</div>
-
-					<div className="poke-fav-btn">
-						<button onClick={heartClick}>
-							{
-								filled ? <AiFillHeart/> : <AiOutlineHeart/>
-							}
-						</button>
 					</div>
 				</div>
 			
